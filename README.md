@@ -1,2 +1,3 @@
-# node-express-service-template
-A template for node express service
+# @f0c1s/node-deprofane-service
+
+A service written in nodejs that removes profanity from text.
