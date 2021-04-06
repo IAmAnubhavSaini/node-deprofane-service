@@ -4,8 +4,8 @@
   "description": "A service written in nodejs that removes profanity from text.",
   "main": "src/service.js",
   "scripts": {
-    "test": "node_modules/.bin/jasmine",
-    "build": "node_modules/.bin/tsc --project tsconfig.json",
+    "test": "jasmine",
+    "build": "tsc --project tsconfig.json",
     "start": "node src/service.js"
   },
   "repository": {

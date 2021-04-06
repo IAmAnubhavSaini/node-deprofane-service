@@ -31,22 +31,28 @@ const config: CONFIG = JSON.parse(readFileSync(configFilename).toString());
 log(green(TAGS.READ('FILE')), yellow(configFilename));
 
 /* All routes go through these */
+const N_A = 'Not allowed!'
 const path = '/deprofane';
 const allowedPath = [path];
 server.all('*', requestID);
 server.all('*', (req: { path: any }, res: any, next: () => void) => {
     const _path = req.path;
     log(TAGS.REQUEST, `${red(_path)} at ${yellow(Date.now())}`);
-    if (!allowedPath.some(i => i.startsWith(_path))) {
-        log(TAGS.INFO, 'Not allowed.', TypesEnum.WARN);
-        res.status(404).send('Not allowed');
+    if (!allowedPath.some(i => i.endsWith(_path))) {
+        log(TAGS.INFO, N_A, TypesEnum.WARN);
+        res.status(404).send(N_A);
     } else {
         next();
     }
 });
 
 server.get(path, (req, res) => {
-    const input: string = req.query['rawtext'] as string;
+    const params = Object.keys(req.query);
+    if (!params.includes('rawtext') || params.length !== 1) {
+        res.status(404).send(N_A);
+        return
+    }
+    const input: string = req.query['rawtext'] as string || '';
     const data = JSON.stringify(deprofane(input));
     const ts = Date.now();
     const hash = sha256(data);

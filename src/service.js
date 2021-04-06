@@ -28,22 +28,28 @@ var configFilename = path_1.join(__dirname, '../config.json');
 var config = JSON.parse(fs_1.readFileSync(configFilename).toString());
 node_common_log_lib_2.default(green(node_common_log_tag_1.TAGS.READ('FILE')), yellow(configFilename));
 /* All routes go through these */
+var N_A = 'Not allowed!';
 var path = '/deprofane';
 var allowedPath = [path];
 server.all('*', requestID);
 server.all('*', function (req, res, next) {
     var _path = req.path;
     node_common_log_lib_2.default(node_common_log_tag_1.TAGS.REQUEST, red(_path) + " at " + yellow(Date.now()));
-    if (!allowedPath.some(function (i) { return i.startsWith(_path); })) {
-        node_common_log_lib_2.default(node_common_log_tag_1.TAGS.INFO, 'Not allowed.', node_common_log_lib_1.TypesEnum.WARN);
-        res.status(404).send('Not allowed');
+    if (!allowedPath.some(function (i) { return i.endsWith(_path); })) {
+        node_common_log_lib_2.default(node_common_log_tag_1.TAGS.INFO, N_A, node_common_log_lib_1.TypesEnum.WARN);
+        res.status(404).send(N_A);
     }
     else {
         next();
     }
 });
 server.get(path, function (req, res) {
-    var input = req.query['rawtext'];
+    var params = Object.keys(req.query);
+    if (!params.includes('rawtext') || params.length !== 1) {
+        res.status(404).send(N_A);
+        return;
+    }
+    var input = req.query['rawtext'] || '';
     var data = JSON.stringify(deprofane_1.default(input));
     var ts = Date.now();
     var hash = node_sha_lib_1.sha256(data);
