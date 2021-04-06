@@ -8,7 +8,6 @@ import log from '@f0c1s/node-common-log-lib';
 import {sha256} from '@f0c1s/node-sha-lib';
 
 /* Colors */
-const bgyellow = require('@f0c1s/color-bgyellow');
 const bgred = require('@f0c1s/color-bgred');
 const bgblue = require('@f0c1s/color-bgblue');
 const red = require('@f0c1s/color-red');
@@ -60,5 +59,5 @@ server.get(path, (req, res) => {
 });
 /* SERVER IS READY */
 const port = config.ports.services.deprofane;
-log(TAGS.INFO, bgyellow(`Serving deprofane service at port ${bgblue(port)} path ${bgred(path)}.`));
+log(TAGS.INFO, `Serving deprofane service at port ${bgblue(port)} path ${bgred(path)}.`);
 server.listen(port);

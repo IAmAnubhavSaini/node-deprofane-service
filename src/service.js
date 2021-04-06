@@ -10,7 +10,6 @@ var node_common_log_tag_1 = require("@f0c1s/node-common-log-tag");
 var node_common_log_lib_2 = __importDefault(require("@f0c1s/node-common-log-lib"));
 var node_sha_lib_1 = require("@f0c1s/node-sha-lib");
 /* Colors */
-var bgyellow = require('@f0c1s/color-bgyellow');
 var bgred = require('@f0c1s/color-bgred');
 var bgblue = require('@f0c1s/color-bgblue');
 var red = require('@f0c1s/color-red');
@@ -57,6 +56,6 @@ server.get(path, function (req, res) {
 });
 /* SERVER IS READY */
 var port = config.ports.services.deprofane;
-node_common_log_lib_2.default(node_common_log_tag_1.TAGS.INFO, bgyellow("Serving deprofane service at port " + bgblue(port) + " path " + bgred(path) + "."));
+node_common_log_lib_2.default(node_common_log_tag_1.TAGS.INFO, "Serving deprofane service at port " + bgblue(port) + " path " + bgred(path) + ".");
 server.listen(port);
 //# sourceMappingURL=service.js.map
