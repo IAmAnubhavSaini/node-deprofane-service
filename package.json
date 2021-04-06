@@ -1,6 +1,6 @@
 {
   "name": "@f0c1s/node-deprofane-service",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A service written in nodejs that removes profanity from text.",
   "main": "src/service.js",
   "scripts": {
