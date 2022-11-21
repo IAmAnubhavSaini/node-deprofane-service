@@ -1,6 +1,6 @@
 {
   "name": "@f0c1s/node-deprofane-service",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "A service written in nodejs that removes profanity from text.",
   "main": "src/service.js",
   "scripts": {
@@ -23,11 +23,14 @@
   },
   "homepage": "https://github.com/iamanubhavsaini/node-deprofane-service#readme",
   "devDependencies": {
-    "@types/express": "^4.17.11",
+    "@types/express": "^4.17.14",
     "@types/jasmine": "^3.6.7",
-    "@types/node": "^14.14.35",
+    "@types/node": "^14.18.33",
+    "@types/webpack-env": "^1.18.0",
+    "eslint": "^8.28.0",
     "jasmine": "^3.7.0",
-    "typescript": "^4.2.3"
+    "prettier": "^2.7.1",
+    "typescript": "^4.9.3"
   },
   "dependencies": {
     "@f0c1s/color-bgblue": "^0.0.1",

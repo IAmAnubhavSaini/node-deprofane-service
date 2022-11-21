@@ -1,4 +1,4 @@
-declare type CONFIG = {
+type CONFIG = {
     ports: {
         services: {
             deprofane: number;
